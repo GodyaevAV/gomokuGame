@@ -1,8 +1,8 @@
 # gomoku
 
-> A Vue.js project
+> Тестовое задание
 
-## Build Setup
+## Для запуска приложениея выполните
 
 ``` bash
 # install dependencies
