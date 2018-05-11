@@ -152,7 +152,6 @@ export default {
     display: inline-block;
     border: 20px groove #543A1D;
     background-color: #E66519;
-    background-image: url("../assets/back4.jpg");
     background-size: 150%;
     background-repeat: no-repeat;
 
