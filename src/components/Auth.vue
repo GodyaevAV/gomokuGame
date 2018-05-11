@@ -1,8 +1,8 @@
 <template>
 <div>
     <div class="title">Игрок {{number}}, введите ваше имя</div>
-    <div class="form"><input type="text" v-model="name" @keyup.enter="setName"></div>
-    <div class="button"><button @ @click="setName">Подтвердить</button></div>
+    <div class="form"><input type="text" v-model="name" @keyup.enter="setName" maxlength="20"></div>
+    <div class="button"><button @click="setName">Подтвердить</button></div>
 </div>
 </template>
 
@@ -33,9 +33,16 @@ export default {
 .title {
   font-size: 16px;
   margin-bottom: 10px;
+  font-family: Pacifico;
 }
   .form{
     width: auto;
     margin-bottom: 10px;
+  }
+  .form > input {
+    width: 270px;
+  }
+  .button > button {
+    font-family: Pacifico;
   }
 </style>

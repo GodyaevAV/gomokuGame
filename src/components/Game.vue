@@ -1,20 +1,20 @@
 <template>
   <div>
-    <div class="info">Ходит {{gamer}}</div>
-    <div class="top" @click="xControl--"></div>
+    <div class="info">Ходит {{gamer | longText}}</div>
+    <div class="arrowTop" @click="xControl--"></div>
     <div class="middle">
-      <div class="left" @click="yControl--"></div>
-      <div class="gameBlock">
+      <div class="left" @click="yControl--"></div><div class="gameBlock">
           <div class="row" v-for="(elem1, index1) in table" :key="index1">
-            <div class="block" v-for="(elem2, index2) in table" :key="index2" @click="setPoint(index1, index2)">
+            <div style="display: inline-block; overflow: hidden;"  v-for="(elem2, index2) in table" :key="index2" @click="setPoint(index1, index2)">
+              <div class="block">
                 <div class="first" v-if="Point(index1, index2)"></div>
                 <div class="second" v-if="Point2(index1, index2)"></div>
+              </div>
             </div>
           </div>
-      </div>
-      <div class="left right" @click="yControl++"></div>
+      </div><div class="left right" @click="yControl++"></div>
     </div>
-    <div class="top rotate" @click="xControl++"></div>
+    <div class="arrowTop rotate" @click="xControl++"></div>
   </div>
 </template>
 
@@ -64,13 +64,17 @@ export default {
     gamer: function () {
       return this.$store.getters.getName(this.gamerNumber)
     }
+  },
+  filters: {
+    longText: function (value) {
+      return value.length > 15 ? value.substring(0, 12)+'...' : value
+    }
   }
 }
 </script>
 
 <style scoped>
   .row{
-    width: 80vh;
     display: block;
     margin: 0;
     padding: 0;
@@ -81,9 +85,14 @@ export default {
   }
 
   .info {
-    margin-bottom: 20px;
-    vertical-align: middle;
-    display: block;
+    position: absolute;
+    top: 20px;
+    left: 10%;
+    font-size: 26px;
+    color: gray;
+    font-family: 'Pacifico', cursive;
+    width: auto;
+    height: 100px;
   }
 
   .block {
@@ -93,18 +102,19 @@ export default {
     height: calc(75vh / 20);
     width: calc(75vh / 20);
     margin: 0;
-    background-size: calc(80vh / 20);
     background-repeat: no-repeat;
     background-image: url(../assets/cross-out.svg);
+    background-size: 100%;
     transform: rotate(45deg);
   }
 
   .left {
+    cursor: pointer;
     display: inline-block;
     height: 50px;
     width: 50px;
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
     vertical-align: middle;
     margin-bottom: 76vh;
     background-image: url("../assets/arrow-left.svg");
@@ -120,12 +130,13 @@ export default {
     width: 70%;
     height: 70%;
     z-index: 2;
-    background-image: url("../assets/circle-outline.svg");
+    background-color: red;
+    border-radius: 100%;
     background-size: 100%;
   }
 .middle {
   width:auto;
-  height:75vh;
+  height:calc(76vh + 34px);
   text-align: center;
 }
   .first {
@@ -139,20 +150,21 @@ export default {
   }
   .gameBlock{
     display: inline-block;
-    padding-top: 0.6vh;
-    height: 76vh;
+    border: 20px groove #543A1D;
     background-color: #E66519;
-    background-size: 200%;
+    background-image: url("../assets/back4.jpg");
+    background-size: 150%;
     background-repeat: no-repeat;
 
   }
-  .top {
+  .arrowTop {
     display: block;
+    cursor: pointer;
     width: 50px;
     height: 50px;
     margin-left: calc(50% - 25px);
     margin-bottom: 5px;
-    margin-top: 15px;
+    margin-top: 5px;
     background-image: url("../assets/arrow-up.svg");
     background-size: 50px;
     background-repeat: no-repeat;
@@ -160,25 +172,5 @@ export default {
   }
   .rotate {
     transform: rotate(180deg);
-  }
-
-  @media (max-width: 640px) {
-    .left{
-      width: 15px;
-    }
-    .top {
-      height: 15px;
-      background-size: 15px;
-      margin-top: 5px;
-      margin-bottom: 3px;
-    }
-    .info {
-      font-size: 12px;
-      margin: 0;
-    }
-    .middle{
-      width: 80%;
-      margin: 0 auto;
-    }
   }
 </style>
