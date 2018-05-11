@@ -101,11 +101,12 @@ export default {
 
   .left {
     display: inline-block;
-    height: 60%;
+    height: 50px;
     width: 50px;
     margin-left: 10px;
     margin-right: 10px;
-    vertical-align: center;
+    vertical-align: middle;
+    margin-bottom: 76vh;
     background-image: url("../assets/arrow-left.svg");
     background-size: 100%;
     background-repeat: no-repeat;
@@ -141,14 +142,17 @@ export default {
     padding-top: 0.6vh;
     height: 76vh;
     background-color: #E66519;
+    background-size: 200%;
+    background-repeat: no-repeat;
 
   }
   .top {
     display: block;
-    width: 100%;
+    width: 50px;
     height: 50px;
-    margin-bottom: 10px;
-    margin-top: 20px;
+    margin-left: calc(50% - 25px);
+    margin-bottom: 5px;
+    margin-top: 15px;
     background-image: url("../assets/arrow-up.svg");
     background-size: 50px;
     background-repeat: no-repeat;

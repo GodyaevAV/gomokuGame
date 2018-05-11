@@ -35,6 +35,7 @@ export default {
 }
   body{
     overflow: hidden;
+    background-color: #F5F5DC;
   }
 
   @media (max-width: 640px) {
